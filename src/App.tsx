@@ -35,7 +35,7 @@ const projects: Project[] = [
     description: "A modern web-based attendance tracking system with real-time updates and detailed analytics.",
     image: "https://www.lystloc.com/blog/wp-content/uploads/2024/01/ezgif-2-0baa780715.webp", // Updated image URL
     technologies: ["Python", "Flask", "MongoDB", "HTML5", "CSS3", "Bootstrap 5", "JavaScript"],
-    github: "https://github.com/yourusername/attendance-management",
+    github: "https://github.com/shashwat-81/Attendance-management.git",
     // link: "https://your-demo-link.com"
   }
 ];
