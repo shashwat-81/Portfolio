@@ -110,7 +110,14 @@ const skills = [
   }
 ];
 
-
+// Add this array near your other data arrays (like projects, certifications)
+const achievements = [
+  {
+    title: "Runner up - Project Omega 2025",
+    description: "Secured 3rd place in a national-level hackathon organized by Yenepoya institute of arts, science, commerce and management, Mangalore.",
+    image: "/Omega.jpg", // Use the public path
+  },
+];
 
 function App() {
   const [userCount, setUserCount] = useState(0);
@@ -231,6 +238,9 @@ function App() {
               </a>
               <a href="#certifications" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                 Certifications
+              </a>
+              <a href="#achievements" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                Achievements
               </a>
               <a href="#contact" className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                 Contact
@@ -546,6 +556,77 @@ function App() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Achievements Section with Carousel */}
+      <section id="achievements" className="py-24 bg-gradient-to-br from-secondary-50 via-white to-primary-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),rgba(255,255,255,0))] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),rgba(0,0,0,0))]"></div>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <h2 className="text-5xl font-bold mb-20 text-center">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 via-purple-600 to-secondary-600 animate-gradient">
+              Achievements
+            </span>
+          </h2>
+          {(() => {
+            const [current, setCurrent] = React.useState(0);
+            const total = achievements.length;
+            const prev = () => setCurrent((c) => (c - 1 + total) % total);
+            const next = () => setCurrent((c) => (c + 1) % total);
+
+            return (
+              <div className="flex flex-col items-center">
+                {/* Description */}
+                <div className="mb-8 text-center">
+                  <h3 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600 animate-gradient">
+                    {achievements[current].title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-2 text-lg">
+                    {achievements[current].description}
+                  </p>
+                </div>
+                {/* Large Image */}
+                <img
+                  src={achievements[current].image}
+                  alt={achievements[current].title}
+                  className="w-full max-w-3xl h-auto object-contain rounded-2xl shadow-xl border-4 border-primary-100 dark:border-primary-900"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://images.unsplash.com/photo-1517849845537-4d257902454a";
+                  }}
+                  data-aos="fade-up"
+                />
+                {total > 1 && (
+                  <div className="flex space-x-4 mt-8">
+                    <button
+                      onClick={prev}
+                      className="px-6 py-2 bg-primary-600 text-white rounded-full hover:bg-primary-700 transition"
+                      aria-label="Previous Achievement"
+                    >
+                      &#8592; Prev
+                    </button>
+                    <button
+                      onClick={next}
+                      className="px-6 py-2 bg-primary-600 text-white rounded-full hover:bg-primary-700 transition"
+                      aria-label="Next Achievement"
+                    >
+                      Next &#8594;
+                    </button>
+                  </div>
+                )}
+                {total > 1 && (
+                  <div className="flex space-x-2 mt-4">
+                    {achievements.map((_, idx) => (
+                      <span
+                        key={idx}
+                        className={`w-3 h-3 rounded-full ${current === idx ? 'bg-primary-600' : 'bg-gray-300 dark:bg-gray-600'}`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
         </div>
       </section>
 
