@@ -21,7 +21,6 @@ Showcases your projects, skills, certifications, internships, and achievements w
 git clone https://github.com/shashwat-81/Portfolio.git
 cd Portfolio
 ```
-
 ### 2. **Install dependencies**
 ```sh
 cd project
